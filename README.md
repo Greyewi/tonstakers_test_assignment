@@ -106,22 +106,6 @@ This project includes a GitHub Actions CI configuration file located at `.github
 
 Ensure your repository is on GitHub. After pushing, the CI should run automatically if GitHub Actions is enabled for the repository.
 
-## Environmental Variables
-
-The project expects certain environmental variables in a `.env` file in the root directory:
-
-```plaintext
-VITE_FIXED_DECIMALS=3
-VITE_LAMPORTS=1000000
-```
-
-### Example `.env` File
-
-```plaintext
-VITE_FIXED_DECIMALS=3
-VITE_LAMPORTS=1000000
-```
-
 ## Additional Information
 
 For more information, refer to the documentation for tools used in this project:
