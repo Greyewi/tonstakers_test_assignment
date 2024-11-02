@@ -14,11 +14,11 @@ Ensure you have the following tools installed on your machine:
 
 1. Clone the repository to your local machine:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/Greyewi/tonstakers_test_assignment.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd tonstakers-test-assignment
+    cd tonstakers_test_assignment
     ```
 
 ## Installing Dependencies
@@ -43,7 +43,7 @@ To start the development server, run:
 npm run dev
 ```
 
-This will start Vite’s development server, and you can view the app at `http://localhost:3000`.
+This will start Vite’s development server, and you can view the app at `http://localhost:5173`.
 
 ## Building the Project
 
