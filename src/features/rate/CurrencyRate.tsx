@@ -1,14 +1,15 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import CurrencyDisplay from './components/CurrencyDisplay'
 import { useAssetData } from './hooks/useAssetData'
-import globalStyles from "@src/App.module.css"
+import globalStyles from '@src/App.module.css'
 import styles from './styles.module.css'
 
-const tonUrl = 'https://api.ston.fi/v1/assets/0:0000000000000000000000000000000000000000000000000000000000000000'
-const tsTonUrl = 'https://api.ston.fi/v1/assets/0:bdf3fa8098d129b54b4f73b5bac5d1e1fd91eb054169c3916dfc8ccd536d1000'
+const tonUrl =
+  'https://api.ston.fi/v1/assets/0:0000000000000000000000000000000000000000000000000000000000000000'
+const tsTonUrl =
+  'https://api.ston.fi/v1/assets/0:bdf3fa8098d129b54b4f73b5bac5d1e1fd91eb054169c3916dfc8ccd536d1000'
 
 const CurrencyRate: FC = () => {
-
   const tonData = useAssetData(tonUrl)
   const tsTonData = useAssetData(tsTonUrl)
 

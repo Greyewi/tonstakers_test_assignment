@@ -1,6 +1,6 @@
-import {useQuery} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import {useRef, useState} from 'react'
+import { useRef, useState } from 'react'
 
 interface AssetData {
   asset: {
@@ -24,7 +24,7 @@ export const useAssetData = (url: string) => {
     queryFn: () => fetchAssetData(`${url}?cache=${cache.current}`),
     refetchInterval: interval * 1000,
     gcTime: interval * 1000,
-    refetchOnWindowFocus: true,
+    refetchOnWindowFocus: true
   })
 
   const fetchWithoutCache = async () => {
@@ -32,5 +32,12 @@ export const useAssetData = (url: string) => {
     return refetch()
   }
 
-  return { data: data?.asset, isLoading, error, refetch: fetchWithoutCache, interval, setInterval }
+  return {
+    data: data?.asset,
+    isLoading,
+    error,
+    refetch: fetchWithoutCache,
+    interval,
+    setInterval
+  }
 }

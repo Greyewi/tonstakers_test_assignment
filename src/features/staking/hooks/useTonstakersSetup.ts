@@ -1,9 +1,9 @@
-import {TonConnect} from "@tonconnect/sdk";
-import {Tonstakers} from "tonstakers-sdk";
-import React, {useEffect} from "react";
-import {useTonWallet} from "@tonconnect/ui-react";
-import {getWalletBalance} from "@utils/get-balance";
-import {Balance, Wallet, TonstakersInfo} from "@features/staking/interfaces";
+import { TonConnect } from '@tonconnect/sdk'
+import { Tonstakers } from 'tonstakers-sdk'
+import React, { useEffect } from 'react'
+import { useTonWallet } from '@tonconnect/ui-react'
+import { getWalletBalance } from '@utils/get-balance'
+import { Balance, Wallet, TonstakersInfo } from '@features/staking/interfaces'
 
 export const useTonstakersSetup = (
   connector: TonConnect,
@@ -19,8 +19,8 @@ export const useTonstakersSetup = (
   useEffect(() => {
     if (tonWallet?.account.address) {
       setLoader(true)
-      tonstakers.addEventListener("initialized", async () => {
-        const tonBalance = await getWalletBalance(connector) as number
+      tonstakers.addEventListener('initialized', async () => {
+        const tonBalance = (await getWalletBalance(connector)) as number
         const tonAvailable = await tonstakers.getAvailableBalance()
         const tsTonStacked = await tonstakers.getStakedBalance()
 
@@ -29,26 +29,27 @@ export const useTonstakersSetup = (
         const stakers = await tonstakers.getStakersCount()
 
         setWallet({
-          tonConnectHandlers: connector, tonSHandlers: tonstakers
+          tonConnectHandlers: connector,
+          tonSHandlers: tonstakers
         })
         setLoader(false)
         setBalance({ tonBalance, tonAvailable, tsTonStacked })
         setInfo({ apy, tvl, stakers })
       })
 
-      tonstakers.addEventListener("deinitialized", async () => {
+      tonstakers.addEventListener('deinitialized', async () => {
         setWallet(null)
         setLoader(false)
       })
-    }
+    } // eslint-disable-next-line
   }, [tonWallet?.account.address])
 
   useEffect(() => {
     if (wallet) {
       connector.onStatusChange(async () => {
-        const walletBalance = await getWalletBalance(connector) as number
+        const walletBalance = (await getWalletBalance(connector)) as number
         setBalance(prev => ({ ...prev, tonBalance: walletBalance }))
       })
-    }
+    } // eslint-disable-next-line
   }, [wallet])
 }

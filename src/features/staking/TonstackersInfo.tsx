@@ -1,12 +1,12 @@
-import {useStake} from "./StakingProvider"
-import {memo} from "react"
-import globalStyles from "@src/App.module.css";
-import {formatTvl} from "@utils/formatTVL";
+import { useStake } from './StakingProvider'
+import { memo } from 'react'
+import globalStyles from '@src/App.module.css'
+import { formatTvl } from '@utils/formatTVL'
 
 const TonstackersInfo = memo(() => {
   const { info } = useStake()
 
-  if(!info) {
+  if (!info) {
     return
   }
 
@@ -19,6 +19,5 @@ const TonstackersInfo = memo(() => {
     </div>
   )
 })
-
 
 export default TonstackersInfo

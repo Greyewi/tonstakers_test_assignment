@@ -1,7 +1,7 @@
-import {ChangeEvent, FC} from "react"
-import {Input, Tooltip} from "antd"
-import styles from "@features/staking/styles.module.css"
-import {InfoCircleOutlined} from "@ant-design/icons"
+import { ChangeEvent, FC } from 'react'
+import { Input, Tooltip } from 'antd'
+import styles from '@features/staking/styles.module.css'
+import { InfoCircleOutlined } from '@ant-design/icons'
 
 interface InputFieldProps {
   value: string
@@ -12,13 +12,20 @@ interface InputFieldProps {
   disabled?: boolean
 }
 
-const InputField: FC<InputFieldProps> = ({ value, onChange, placeholder, suffixTooltip, disabled = false, prefix = 'TON' }) => (
+const InputField: FC<InputFieldProps> = ({
+  value,
+  onChange,
+  placeholder,
+  suffixTooltip,
+  disabled = false,
+  prefix = 'TON'
+}) => (
   <Input
     className={styles.form_field}
     placeholder={placeholder}
     prefix={<span style={{ opacity: 0.5 }}>{prefix}</span>}
-    type="number"
-    min="0"
+    type='number'
+    min='0'
     value={value}
     onChange={onChange}
     suffix={

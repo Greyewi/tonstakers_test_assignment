@@ -1,9 +1,9 @@
-import logoSvg from "@shared/img/logo.svg";
+import logoSvg from '@shared/img/logo.svg'
 import styles from './logo.module.css'
-const Logo = () =>{
+const Logo = () => {
   return (
     <picture className={styles.logo}>
-      <img src={logoSvg} alt="tonstaker logo"/>
+      <img src={logoSvg} alt='tonstaker logo' />
     </picture>
   )
 }

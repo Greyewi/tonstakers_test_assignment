@@ -1,11 +1,11 @@
-import {memo, useState, FC} from "react"
-import { useStake } from "./StakingProvider"
-import globalStyles from "@src/App.module.css"
+import { memo, useState, FC } from 'react'
+import { useStake } from './StakingProvider'
+import globalStyles from '@src/App.module.css'
 import styles from './styles.module.css'
 import ActionButton from './components/ActionButton'
 import InputField from './components/InputField'
-import {useStakeActions} from './hooks/useStakeActions'
-import {useUnstakeActions} from './hooks/useUnstakeActions'
+import { useStakeActions } from './hooks/useStakeActions'
+import { useUnstakeActions } from './hooks/useUnstakeActions'
 
 interface StakeFormProps {
   stakeValue: string
@@ -24,62 +24,84 @@ interface UnstakeFormProps {
   balance: { tsTonStacked?: number } | null
 }
 
-const StakeForm: FC<StakeFormProps> = ({ stakeValue, setStakeValue, handleStake, handleStakeMax, balance }) => {
- const check = Number(balance?.tonBalance) < Number(stakeValue)
+const StakeForm: FC<StakeFormProps> = ({
+  stakeValue,
+  setStakeValue,
+  handleStake,
+  handleStakeMax,
+  balance
+}) => {
+  const check = Number(balance?.tonBalance) < Number(stakeValue)
 
-  return (<div className={styles.form_area}>
-    {check && <span className={styles.form_alert}>Insufficient TON balance</span>}
-    <InputField
-      value={stakeValue}
-      prefix="TON"
-      onChange={(e) => setStakeValue(e.target.value)}
-      placeholder="Enter amount to stake"
-      suffixTooltip="TON will be convert to tsTON"
-    />
-    <ActionButton
-      onClick={handleStake}
-      text={`Stake ${stakeValue ? `${stakeValue} TONs` : ''}`}
-      disabled={check || !Number(stakeValue)}
-    />
-    <ActionButton
-      onClick={handleStakeMax}
-      disabled={Number(balance?.tonBalance) < 1}
-      text="Stake Max"
-    />
-  </div>)
+  return (
+    <div className={styles.form_area}>
+      {check && (
+        <span className={styles.form_alert}>Insufficient TON balance</span>
+      )}
+      <InputField
+        value={stakeValue}
+        prefix='TON'
+        onChange={e => setStakeValue(e.target.value)}
+        placeholder='Enter amount to stake'
+        suffixTooltip='TON will be convert to tsTON'
+      />
+      <ActionButton
+        onClick={handleStake}
+        text={`Stake ${stakeValue ? `${stakeValue} TONs` : ''}`}
+        disabled={check || !Number(stakeValue)}
+      />
+      <ActionButton
+        onClick={handleStakeMax}
+        disabled={Number(balance?.tonBalance) < 1}
+        text='Stake Max'
+      />
+    </div>
+  )
 }
 
-const UnstakeForm:FC<UnstakeFormProps> = ({ unstakeValue, setUnstakeValue, handleUnstake, handleUnstakeInstant, handleUnstakeBestRate, balance }) => {
-  const check = (Number(balance?.tsTonStacked) / import.meta.env.VITE_LAMPORTS) < Number(unstakeValue)
-  return (<div className={styles.form_area}>
-    {check && <span className={styles.form_alert}>Insufficient staked balance</span>}
-    <InputField
-      value={unstakeValue}
-      prefix="tsTON"
-      onChange={(e) => setUnstakeValue(e.target.value)}
-      placeholder="Enter amount to unstake"
-      suffixTooltip="Unstaking converts tsTON back to TON"
-    />
-    <ActionButton
-      onClick={handleUnstake}
-      text={`Unstake ${unstakeValue ? `${unstakeValue} tsTONs` : ''}`}
-      disabled={check || !Number(unstakeValue)}
-    />
-    <ActionButton
-      onClick={handleUnstakeInstant}
-      text={`Unstake Instant ${unstakeValue ? `${unstakeValue} tsTONs` : ''}`}
-      disabled={check || !Number(unstakeValue)}
-    />
-    <ActionButton
-      onClick={handleUnstakeBestRate}
-      text={`Unstake Best Rate ${unstakeValue ? `${unstakeValue} tsTONs` : ''}`}
-      disabled={check || !Number(unstakeValue)}
-    />
-  </div>)
+const UnstakeForm: FC<UnstakeFormProps> = ({
+  unstakeValue,
+  setUnstakeValue,
+  handleUnstake,
+  handleUnstakeInstant,
+  handleUnstakeBestRate,
+  balance
+}) => {
+  const check =
+    Number(balance?.tsTonStacked) / import.meta.env.VITE_LAMPORTS <
+    Number(unstakeValue)
+  return (
+    <div className={styles.form_area}>
+      {check && (
+        <span className={styles.form_alert}>Insufficient staked balance</span>
+      )}
+      <InputField
+        value={unstakeValue}
+        prefix='tsTON'
+        onChange={e => setUnstakeValue(e.target.value)}
+        placeholder='Enter amount to unstake'
+        suffixTooltip='Unstaking converts tsTON back to TON'
+      />
+      <ActionButton
+        onClick={handleUnstake}
+        text={`Unstake ${unstakeValue ? `${unstakeValue} tsTONs` : ''}`}
+        disabled={check || !Number(unstakeValue)}
+      />
+      <ActionButton
+        onClick={handleUnstakeInstant}
+        text={`Unstake Instant ${unstakeValue ? `${unstakeValue} tsTONs` : ''}`}
+        disabled={check || !Number(unstakeValue)}
+      />
+      <ActionButton
+        onClick={handleUnstakeBestRate}
+        text={`Unstake Best Rate ${unstakeValue ? `${unstakeValue} tsTONs` : ''}`}
+        disabled={check || !Number(unstakeValue)}
+      />
+    </div>
+  )
 }
 
-
-const TonstakersActions:FC = memo(() => {
+const TonstakersActions: FC = memo(() => {
   const [stakeValue, setStakeValue] = useState<string>('')
   const [unstakeValue, setUnstakeValue] = useState<string>('')
 
