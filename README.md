@@ -1,27 +1,131 @@
-# vite-template-redux
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+# Tonstakers Test Assignment
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
+This guide will help you set up, run, and test the Tonstakers Test Assignment project.
+
+## Prerequisites
+
+Ensure you have the following tools installed on your machine:
+- Node.js (v16 or higher, checked v22)
+- npm or yarn
+- Git
+
+## Cloning the Repository
+
+1. Clone the repository to your local machine:
+    ```bash
+    git clone <repository-url>
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd tonstakers-test-assignment
+    ```
+
+## Installing Dependencies
+
+Run the following command to install all required dependencies:
+
+```bash
+npm i
 ```
 
-## Goals
+or if you use yarn:
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+```bash
+yarn
+```
 
-## Scripts
+## Running the Development Server
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+To start the development server, run:
 
-## Inspiration
+```bash
+npm run dev
+```
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+This will start Vite’s development server, and you can view the app at `http://localhost:3000`.
+
+## Building the Project
+
+To create a production build, run:
+
+```bash
+npm run build
+```
+
+The production-ready files will be in the `dist` directory.
+
+## Running Tests
+
+Run the following command to execute all tests using Vitest:
+
+```bash
+npm run test
+```
+
+## Code Formatting and Linting
+
+### Formatting with Prettier
+
+To format the code, run:
+
+```bash
+npm run format
+```
+
+### Linting with ESLint
+
+To check for linting issues, run:
+
+```bash
+npm run lint
+```
+
+To fix linting issues automatically, use:
+
+```bash
+npm run lint:fix
+```
+
+## Type Checking
+
+To ensure TypeScript type correctness, run:
+
+```bash
+npm run type-check
+```
+
+## Continuous Integration (CI)
+
+This project includes a GitHub Actions CI configuration file located at `.github/workflows/ci.yml`. The CI pipeline checks the following on every push:
+- Code linting
+- Type checking
+- Unit tests
+
+### Setting Up CI
+
+Ensure your repository is on GitHub. After pushing, the CI should run automatically if GitHub Actions is enabled for the repository.
+
+## Environmental Variables
+
+The project expects certain environmental variables in a `.env` file in the root directory:
+
+```plaintext
+VITE_FIXED_DECIMALS=3
+VITE_LAMPORTS=1000000
+```
+
+### Example `.env` File
+
+```plaintext
+VITE_FIXED_DECIMALS=3
+VITE_LAMPORTS=1000000
+```
+
+## Additional Information
+
+For more information, refer to the documentation for tools used in this project:
+- [Vite](https://vitejs.dev/)
+- [React Query](https://tanstack.com/query/latest)
+- [Ant Design](https://ant.design/)
+
