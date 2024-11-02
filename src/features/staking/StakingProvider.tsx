@@ -4,11 +4,11 @@ import { TonConnect } from "@tonconnect/sdk"
 import { useTonstakersSetup } from "./hooks/useTonstakersSetup"
 import { StakeContextType, TonstakersInfo, Balance, Wallet } from "@features/staking/interfaces"
 
-const initBalance: Balance = {
+export const initBalance: Balance = {
   tonBalance: 0, tonAvailable: 0, tsTonStacked: 0
 }
 
-const initInfo: TonstakersInfo = {
+export const initInfo: TonstakersInfo = {
   apy: 0, tvl: 0, stakers: 0
 }
 

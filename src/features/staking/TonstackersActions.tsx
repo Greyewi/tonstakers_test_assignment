@@ -79,7 +79,7 @@ const UnstakeForm:FC<UnstakeFormProps> = ({ unstakeValue, setUnstakeValue, handl
 }
 
 
-const TonstackersManageUI:FC = memo(() => {
+const TonstakersActions:FC = memo(() => {
   const [stakeValue, setStakeValue] = useState<string>('')
   const [unstakeValue, setUnstakeValue] = useState<string>('')
 
@@ -110,4 +110,4 @@ const TonstackersManageUI:FC = memo(() => {
   )
 })
 
-export default TonstackersManageUI
+export default TonstakersActions

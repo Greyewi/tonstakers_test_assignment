@@ -1,7 +1,6 @@
 import {FC, memo} from 'react'
-import {Select, Tooltip} from 'antd'
+import {Select} from 'antd'
 import type { SelectProps } from 'antd'
-import {InfoCircleOutlined} from "@ant-design/icons";
 
 interface IntervalSelectorProps {
   value: number
