@@ -1,0 +1,35 @@
+.app main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid);
+}
+
+.app_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 18px 12px 24px;
+    margin-top: 0;
+}
+
+.app_wallet_connection {
+    filter: invert(100%);
+}
+
+.app_wallet_connection button{
+    min-width: 135px;
+}
+
+.component_wrapper {
+    background: var(--modal-header);
+    --gap: .75rem;
+    border-radius: .75rem;
+    padding: .675rem .875rem;
+    transition-property: padding, margin-top, max-height;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    margin: 0 18px 0 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid);
+}

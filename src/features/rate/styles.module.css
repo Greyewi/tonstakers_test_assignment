@@ -1,0 +1,32 @@
+.currency {
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid);
+}
+
+.currency label {
+    display: flex;
+    gap: var(--grid);
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    gap: var(--grid);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.image {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.text {
+    margin: 5px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap:3px;
+}

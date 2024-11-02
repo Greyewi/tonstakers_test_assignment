@@ -2,22 +2,22 @@ import React from "react"
 import { createRoot } from "react-dom/client"
 import App from "./App"
 import "./index.css"
-import {TonConnectUIProvider} from "@tonconnect/ui-react";
-import {TonConnect} from "@tonconnect/sdk";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {WalletProvider} from "./features/wallet/WalletProvider";
-import {Tonstakers} from "tonstakers-sdk";
+import {TonConnectUIProvider} from "@tonconnect/ui-react"
+import {TonConnect} from "@tonconnect/sdk"
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
+import {StakingProvider} from "@features/staking/StakingProvider"
+import {Tonstakers} from "tonstakers-sdk"
 
 const container = document.getElementById("root")
 
 if (container) {
   const root = createRoot(container)
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient()
   const connector = new TonConnect({
-    manifestUrl: "http://159.69.22.219:1000/tonconnect-manifest.json",
-  });
+    manifestUrl: import.meta.env.VITE_MANIFEST_URL
+  })
 
-  const tonstackers = new Tonstakers( // @ts-ignore TODO: fix interface
+  const tonstakers = new Tonstakers( // @ts-ignore TODO: fix tonstakers-sdk interface
     {connector}
   )
 
@@ -25,12 +25,12 @@ if (container) {
     <QueryClientProvider client={queryClient}>
       <TonConnectUIProvider connector={connector}>
         <React.StrictMode>
-          <WalletProvider
+          <StakingProvider
             connector={connector}
-            tonstackers={tonstackers}
+            tonstakers={tonstakers}
           >
             <App/>
-          </WalletProvider>
+          </StakingProvider>
         </React.StrictMode>
       </TonConnectUIProvider>
     </QueryClientProvider>,
